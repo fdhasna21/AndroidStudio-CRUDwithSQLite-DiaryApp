@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.LatihanCRUD_DailyAgenda2" parent="Theme.MaterialComponents.Light">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/pink_regular</item>
+        <item name="colorPrimaryVariant">@color/pink_light</item>
+        <item name="colorOnPrimary">@color/pink_dark</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/orange_regular</item>
+        <item name="colorSecondaryVariant">@color/orange_light</item>
+        <item name="colorOnSecondary">@color/orange_dark</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+</resources>

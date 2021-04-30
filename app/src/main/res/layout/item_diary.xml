@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
+    app:cardUseCompatPadding="true"
+    android:layout_marginVertical="1dp"
+    android:id="@+id/diarylayout_container">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+        <TextView
+            android:id="@+id/diarylayout_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+             android:text="Date"
+            android:maxLines="1"
+            android:maxWidth="50dp"
+            style="?attr/textAppearanceSubtitle1"
+            android:textSize="12dp"
+            android:textColor="@color/text_gray"
+            android:layout_marginBottom="2dp"/>
+
+            <TextView
+                android:id="@+id/diarylayout_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Time"
+                android:maxLines="1"
+                android:maxWidth="50dp"
+                style="?attr/textAppearanceSubtitle1"
+                android:textSize="12dp"
+                android:textColor="@color/text_gray"
+                android:layout_marginBottom="2dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/diarylayout_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            style="?attr/textAppearanceSubtitle1"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/diarylayout_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This is the diary content. "
+            android:textSize="13sp"
+            style="?attr/textAppearanceSubtitle1"
+            android:maxLines="3"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

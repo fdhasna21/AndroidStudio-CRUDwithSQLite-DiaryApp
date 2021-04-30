@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/layoutPadding">
+
+    <include
+        android:id="@+id/add_container"
+        layout="@layout/add_edit_layout"
+        android:layout_marginBottom="@dimen/viewPadding"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_above="@id/add_button_save"
+        android:layout_alignParentTop="true"/>
+
+    <Button
+        android:id="@+id/add_button_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="submit"
+        style="@style/AppTextAppearance.Button"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

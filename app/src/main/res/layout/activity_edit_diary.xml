@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/layoutPadding">
+
+    <include
+        android:id="@+id/edit_container"
+        layout="@layout/add_edit_layout"
+        android:layout_marginBottom="@dimen/viewPadding"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_above="@id/edit_buttons"
+        android:layout_alignParentTop="true"/>
+
+    <RelativeLayout
+        android:id="@+id/edit_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/edit_button_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            style="@style/AppTextAppearance.Button"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"/>
+
+        <Button
+            android:id="@+id/edit_button_discard"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Discard"
+            style="@style/AppTextAppearance.Button2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"/>
+
+        <Button
+            android:id="@+id/edit_button_save"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            style="@style/AppTextAppearance.Button"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+</RelativeLayout>
