@@ -1,14 +1,20 @@
-package com.example.latihancrud_dailyagenda
+package com.example.latihancrud_dailyagenda.database
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.latihancrud_dailyagenda.model.DiaryModel
+import java.util.*
 
 class DatabaseHandler(context: Context)
-    :SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+    :SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION),
+    DatabaseObserveable {
+
+    private var dbObserver: ArrayList<DatabaseObserver> = ArrayList<DatabaseObserver>()
 
     companion object{
         private val DATABASE_NAME = "DiaryDatabase"
@@ -20,6 +26,22 @@ class DatabaseHandler(context: Context)
         private val KEY_TIME = "time"
         private val KEY_TITLE = "title"
         private val KEY_CONTENT = "content"
+    }
+
+    override fun regisisterDatabaseObserver(databaseObserver: DatabaseObserver) {
+        if(!dbObserver.contains(databaseObserver)){
+            dbObserver.add(databaseObserver)
+        }
+    }
+
+    override fun removeDatabaseObserver(databaseObserver: DatabaseObserver) {
+        dbObserver.remove(databaseObserver)
+    }
+
+    override fun notifyDatabaseChanged() {
+        for(databaseObserver in dbObserver){
+            databaseObserver.onDatabaseChanged()
+        }
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -42,9 +64,11 @@ class DatabaseHandler(context: Context)
 
         val success = db.insert(TABLE_NAME, null, contentValues)
         db.close()
+        notifyDatabaseChanged()
         return success
     }
 
+    @SuppressLint("Range")
     fun showDiary(): ArrayList<DiaryModel> {
         val db = this.writableDatabase
         val tempDiary = ArrayList<DiaryModel>()
@@ -73,29 +97,34 @@ class DatabaseHandler(context: Context)
         return tempDiary
     }
 
-    fun deleteDiary(diary:DiaryModel): Int {
+    fun deleteDiary(diaryId : Int): Int {
         val db = this.writableDatabase
         val contentValues = ContentValues()
 
-        contentValues.put(KEY_ID, diary.id)
+        contentValues.put(KEY_ID, diaryId)
 
-        val success = db.delete(TABLE_NAME, "$KEY_ID = ${diary.id}", null)
+        val success = db.delete(TABLE_NAME, "$KEY_ID = ${diaryId}", null)
         db.close()
+        notifyDatabaseChanged()
         return success
     }
 
-    fun updateDiary(diary:DiaryModel):Int{
+    fun updateDiary(diary: DiaryModel):Int{
         val db = this.writableDatabase
         val contentValues = ContentValues()
 
-        contentValues.put(KEY_ID, diary.id)
-        contentValues.put(KEY_DATE, diary.date)
-        contentValues.put(KEY_TIME, diary.time)
-        contentValues.put(KEY_TITLE, diary.title)
-        contentValues.put(KEY_CONTENT, diary.content)
+        contentValues.apply {
+            put(KEY_ID, diary.id)
+            put(KEY_DATE, diary.date)
+            put(KEY_TIME, diary.time)
+            put(KEY_TITLE, diary.title)
+            put(KEY_CONTENT, diary.content)
+        }
 
         val success = db.update(TABLE_NAME, contentValues, "$KEY_ID = ${diary.id}", null)
         db.close()
+        notifyDatabaseChanged()
         return success
     }
 }
+

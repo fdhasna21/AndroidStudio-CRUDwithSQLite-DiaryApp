@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LatihanCRUD_DailyAgenda">
-        <activity android:name=".AddDiary" />
-        <activity android:name=".EditDiary" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.AddDiary" />
+        <activity android:name=".activity.EditDiary" />
+        <activity android:name=".activity.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
