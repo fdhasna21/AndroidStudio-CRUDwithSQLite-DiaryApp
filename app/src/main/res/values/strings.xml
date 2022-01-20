@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LatihanCRUD_DailyAgenda</string>
+    <string name="app_name">Dear Diary</string>
     <string name="add_new_record">Add new record</string>
     <string name="no_records_available">No Records Available</string>
     <string name="refresh">Refresh</string>

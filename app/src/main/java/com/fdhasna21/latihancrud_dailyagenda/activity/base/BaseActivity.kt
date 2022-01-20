@@ -1,4 +1,4 @@
-package com.example.latihancrud_dailyagenda.activity.base
+package com.fdhasna21.latihancrud_dailyagenda.activity.base
 
 import android.content.Context
 import android.content.Intent
@@ -11,8 +11,8 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
-import com.example.latihancrud_dailyagenda.ViewUtils
-import com.example.latihancrud_dailyagenda.database.DatabaseHandler
+import com.fdhasna21.latihancrud_dailyagenda.ViewUtils
+import com.fdhasna21.latihancrud_dailyagenda.database.DatabaseHandler
 
 abstract class BaseActivity<B:ViewBinding> : AppCompatActivity() {
     lateinit var binding : B

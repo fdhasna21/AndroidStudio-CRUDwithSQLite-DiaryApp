@@ -1,16 +1,16 @@
-package com.example.latihancrud_dailyagenda.activity
+package com.fdhasna21.latihancrud_dailyagenda.activity
 
 import android.content.Intent
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.latihancrud_dailyagenda.AppConstant
+import com.fdhasna21.latihancrud_dailyagenda.AppConstant
 import com.example.latihancrud_dailyagenda.R
-import com.example.latihancrud_dailyagenda.activity.base.BaseActivity
-import com.example.latihancrud_dailyagenda.adapter.DiaryAdapter
+import com.fdhasna21.latihancrud_dailyagenda.activity.base.BaseActivity
+import com.fdhasna21.latihancrud_dailyagenda.adapter.DiaryAdapter
 import com.example.latihancrud_dailyagenda.databinding.ActivityMainBinding
-import com.example.latihancrud_dailyagenda.model.DiaryModel
+import com.fdhasna21.latihancrud_dailyagenda.model.DiaryModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>(){
     override var TAG : String = "MainActivity"
@@ -47,7 +47,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(){
         val dataOut = db.showDiary()
         val diaryAdapter = DiaryAdapter(dataOut)
         diaryAdapter.setOnItemClickListener(object : DiaryAdapter.OnItemClickListener{
-            override fun onItemClicked(position: Int, item:DiaryModel) {
+            override fun onItemClicked(position: Int, item: DiaryModel) {
                 val intent = Intent(this@MainActivity, EditDiary::class.java)
                 intent.putExtra(AppConstant.SELECTED_DIARY, item)
                 activityForResult.launch(intent)

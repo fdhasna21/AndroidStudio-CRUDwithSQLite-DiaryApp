@@ -1,10 +1,10 @@
-package com.example.latihancrud_dailyagenda.adapter
+package com.fdhasna21.latihancrud_dailyagenda.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.latihancrud_dailyagenda.databinding.ItemDiaryBinding
-import com.example.latihancrud_dailyagenda.model.DiaryModel
+import com.fdhasna21.latihancrud_dailyagenda.model.DiaryModel
 
 class DiaryAdapter(private val diaryList: ArrayList<DiaryModel>)
     : RecyclerView.Adapter<DiaryAdapter.ViewHolder>() {
@@ -40,7 +40,7 @@ class DiaryAdapter(private val diaryList: ArrayList<DiaryModel>)
     }
 
     interface OnItemClickListener{
-        fun onItemClicked(position: Int, item:DiaryModel)
+        fun onItemClicked(position: Int, item: DiaryModel)
     }
 
 }

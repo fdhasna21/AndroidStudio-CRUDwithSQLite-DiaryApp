@@ -1,4 +1,4 @@
-package com.example.latihancrud_dailyagenda.database
+package com.fdhasna21.latihancrud_dailyagenda.database
 
 interface DatabaseObserveable {
     fun regisisterDatabaseObserver(databaseObserver : DatabaseObserver)

@@ -1,14 +1,14 @@
-package com.example.latihancrud_dailyagenda.activity
+package com.fdhasna21.latihancrud_dailyagenda.activity
 
 import android.content.DialogInterface
 import android.text.format.DateFormat
 import android.view.MenuItem
 import android.view.View
-import com.example.latihancrud_dailyagenda.AppConstant
+import com.fdhasna21.latihancrud_dailyagenda.AppConstant
 import com.example.latihancrud_dailyagenda.R
-import com.example.latihancrud_dailyagenda.activity.base.BaseActivity
+import com.fdhasna21.latihancrud_dailyagenda.activity.base.BaseActivity
 import com.example.latihancrud_dailyagenda.databinding.ActivityEditDiaryBinding
-import com.example.latihancrud_dailyagenda.model.DiaryModel
+import com.fdhasna21.latihancrud_dailyagenda.model.DiaryModel
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -71,16 +71,16 @@ class EditDiary : BaseActivity<ActivityEditDiaryBinding>() {
                     builder.setCancelable(false)
                     builder.setIcon(R.drawable.ic_warning)
 
-                    builder.setNeutralButton("Cancel") { dialog: DialogInterface, which ->
+                    builder.setNeutralButton("Cancel") { dialog: DialogInterface, _ ->
                         dialog.dismiss()
                     }
 
-                    builder.setPositiveButton("Save") { dialog: DialogInterface, which ->
+                    builder.setPositiveButton("Save") { dialog: DialogInterface, _ ->
                         editButtonSave.performClick()
                         dialog.dismiss()
                     }
 
-                    builder.setNegativeButton("Discard") { dialog: DialogInterface, which ->
+                    builder.setNegativeButton("Discard") { dialog: DialogInterface, _ ->
                         dialog.dismiss()
                         gotoMainActivity()
                     }

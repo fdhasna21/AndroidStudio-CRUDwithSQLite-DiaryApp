@@ -3,15 +3,15 @@
     package="com.example.latihancrud_dailyagenda">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LatihanCRUD_DailyAgenda">
-        <activity android:name=".activity.AddDiary" />
-        <activity android:name=".activity.EditDiary" />
-        <activity android:name=".activity.MainActivity"
+        <activity android:name="com.fdhasna21.latihancrud_dailyagenda.activity.AddDiary" />
+        <activity android:name="com.fdhasna21.latihancrud_dailyagenda.activity.EditDiary" />
+        <activity android:name="com.fdhasna21.latihancrud_dailyagenda.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

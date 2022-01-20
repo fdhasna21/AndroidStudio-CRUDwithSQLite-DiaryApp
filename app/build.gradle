@@ -5,34 +5,120 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('ddiary.keystore')
+            storePassword 'ddiary2022'
+            keyAlias 'mb_deardiary'
+            keyPassword 'ddiary2022'
+        }
+    }
+
+    defaultConfig{
+        versionName "1.1.0"
+    }
+
     compileSdkVersion 31
     buildToolsVersion "30.0.3"
-
-    defaultConfig {
-        applicationId "com.example.latihancrud_dailyagenda"
-        minSdkVersion 16
-        targetSdkVersion 31
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    flavorDimensions "version"
+    productFlavors {
+        dev {
+            applicationId "com.fdhasna21.latihancrud_dailyagenda"
+            minSdkVersion 21
+            targetSdkVersion 31
+            versionCode 2
+            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+            dimension "version"
+            externalNativeBuild {
+                cmake {
+                    cppFlags ""
+                }
+            }
+            buildConfigField("String", "PASSWORD_BKS", "\"ddiary2022\"")
+        }
+        prod {
+            applicationId "com.fdhasna21.latihancrud_dailyagenda"
+            minSdkVersion 21
+            targetSdkVersion 31
+            versionCode 2
+            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+            dimension "version"
+            externalNativeBuild {
+                cmake {
+                    cppFlags ""
+                }
+            }
+            buildConfigField("String", "PASSWORD_BKS", "\"ddiary2022\"")
+        }
     }
 
     buildTypes {
+        debug{
+            debuggable true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
         release {
+            debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def appName = "Dear Diary"
+            def feature = "Add, Edit, Delete in Local "
+            def flavor = variant.productFlavors[0].name
+            def type = variant.buildType.name
+            def apkName = "${appName} v${versionName} b${versionCode} - ${feature} ${flavor}${type}.apk"
+            outputFileName = new File(apkName)
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
     buildFeatures {
         viewBinding true
+    }
+}
+
+tasks.whenTaskAdded { task ->
+    def name = task.name
+
+    //Skip some unnecessary tasks
+    if (name.startsWith("bundle")
+            && !name.contains("Classes")
+            && !name.contains("Resources")
+            && name != "bundle") {
+
+        def renameTaskName = "rename${task.name.capitalize()}Aab"
+        def version = "${android.defaultConfig.versionName}"
+        def flavor = getFlavor(name)
+        def type = getBuildType(name)
+        if(flavor == null || type == null) return
+
+        def outputName = "Dear Diary v${version}"
+        tasks.create(renameTaskName) {
+            def path = "${rootDir}/app/${flavor}/${type}/"
+            def originalFile = "$path/app-${flavor}-${type}.aab"
+
+            doLast {
+                if (file("$originalFile").exists()) {
+                    ant.move file: "$originalFile",
+                            tofile: "$path/${outputName}.aab"
+                }
+            }
+        }
+
+        task.finalizedBy(renameTaskName)
     }
 }
 
@@ -46,6 +132,46 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
 
+static String firstMatchingSubstring(String taskName, String[] keys) {
+    def lcName = taskName.toLowerCase()
+
+    for(String key: keys) {
+        if(lcName.contains(key.toLowerCase())) return key
+    }
+
+    return null
+}
+
+String getBuildType(String taskName) {
+    return firstMatchingSubstring(taskName, getBuildTypeNames())
+}
+
+String getFlavor(String taskName) {
+    return firstMatchingSubstring(taskName, getProductFlavorNames())
+}
+
+String[] getBuildTypeNames() {
+    def types = []
+
+    android.buildTypes.all { type ->
+        types.add(type.name)
+    }
+
+    return types
+}
+
+String[] getProductFlavorNames() {
+    def flavors = []
+
+    android.productFlavors.all { flavor ->
+        flavors.add(flavor.name)
+    }
+
+    return flavors
+}
+
+String getVersionCode(){
 }
 

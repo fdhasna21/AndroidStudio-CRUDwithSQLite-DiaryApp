@@ -1,4 +1,4 @@
-package com.example.latihancrud_dailyagenda
+package com.fdhasna21.latihancrud_dailyagenda
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

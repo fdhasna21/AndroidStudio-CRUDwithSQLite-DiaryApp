@@ -1,12 +1,12 @@
-package com.example.latihancrud_dailyagenda.activity
+package com.fdhasna21.latihancrud_dailyagenda.activity
 
 import android.text.format.DateFormat.is24HourFormat
 import android.widget.EditText
 import android.widget.Toast
-import com.example.latihancrud_dailyagenda.AppConstant
-import com.example.latihancrud_dailyagenda.activity.base.BaseActivity
+import com.fdhasna21.latihancrud_dailyagenda.AppConstant
+import com.fdhasna21.latihancrud_dailyagenda.activity.base.BaseActivity
 import com.example.latihancrud_dailyagenda.databinding.ActivityAddDiaryBinding
-import com.example.latihancrud_dailyagenda.model.DiaryModel
+import com.fdhasna21.latihancrud_dailyagenda.model.DiaryModel
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker

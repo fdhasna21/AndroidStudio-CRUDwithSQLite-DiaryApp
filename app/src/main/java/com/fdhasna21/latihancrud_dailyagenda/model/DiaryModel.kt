@@ -1,4 +1,4 @@
-package com.example.latihancrud_dailyagenda.model
+package com.fdhasna21.latihancrud_dailyagenda.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
