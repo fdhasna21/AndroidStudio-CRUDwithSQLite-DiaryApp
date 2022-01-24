@@ -26,7 +26,7 @@ android {
             applicationId "com.fdhasna21.latihancrud_dailyagenda"
             minSdkVersion 21
             targetSdkVersion 31
-            versionCode 2
+            versionCode 3
             testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
             dimension "version"
             externalNativeBuild {
@@ -68,7 +68,7 @@ android {
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
             def appName = "Dear Diary"
-            def feature = "Add, Edit, Delete in Local "
+            def feature = "Add, Edit, Delete in Local"
             def flavor = variant.productFlavors[0].name
             def type = variant.buildType.name
             def apkName = "${appName} v${versionName} b${versionCode} - ${feature} ${flavor}${type}.apk"
